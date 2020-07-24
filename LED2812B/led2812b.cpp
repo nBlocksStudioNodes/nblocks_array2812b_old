@@ -51,7 +51,7 @@ void LED2812B::send_pixel(Pixel& pixel)
 	SendFourBits(_spi, (pixel.blue  >> 0) & 0xf);
 }
 
-void PixelArray::update(Pixel buffer[], uint32_t length)
+void LED2812B::update(Pixel buffer[], uint32_t length)
 {
     // Manually set the color fields of the four pixels in the pixel buffer.
     

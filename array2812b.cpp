@@ -34,7 +34,7 @@ void nBlock_Array2812B::endFrame(void){
 
 	if (must_update) {
 		must_update = 0;
-		_led_array.update(pixels, NUM_PIXELS);
+		_led_array.update(pixels, _NUM_PIXELS);
 	}
 	
 	

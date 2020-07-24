@@ -24,7 +24,7 @@ private
 	
 	static int const latch_time_us_ = 50;
 	
-	void send_pixel(Pixel& pixel)
+	void send_pixel(Pixel& pixel);
 };
 
 
