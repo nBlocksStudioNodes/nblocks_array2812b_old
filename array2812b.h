@@ -1,13 +1,12 @@
-
-#ifndef __NB_NEOPIXEL1599
-#define __NB_NEOPIXEL1599
+#ifndef __NB_ARRAY2812B
+#define __NB_ARRAY2812B
 
 // This is max number of pixels possible, actual number of
 // used pixels will be set in constructor
 #define _NUM_PIXELS 64
 
 #include "nworkbench.h"
-#include "PixelArray/neopixel.h"
+#include "LED2812B/led2812b.h"
 
 class nBlock_Array2812B: public nBlockSimpleNode<1> {
 public:
@@ -20,12 +19,12 @@ public:
 private:
 
     // Declare array/buffer of type Pixel.
-    neopixel::Pixel pixels[_NUM_PIXELS];	
+    Pixel pixels[_NUM_PIXELS];	
 	//uint8_t  arrayValues[_NUM_PIXELS*3UL] =  { 0UL };
 	
 	
     // The pixel array control class.
-    neopixel::PixelArray * _pixel_array;
+    LED2812B _led_array;
 
 	uint32_t num_leds;
 	uint32_t must_update = 0;

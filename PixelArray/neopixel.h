@@ -3,7 +3,8 @@
 
 #include <stdint.h>
 #include "mbed.h"
-#include "BurstSPI.h"
+//#include "BurstSPI.h"
+#define BurstSPI SPI
 
 namespace neopixel
 {
@@ -145,7 +146,8 @@ public:
     void update(PixelGenerator generator, uint32_t length, uintptr_t extra);
 
 private:
-    BurstSPI spi_;
+    //BurstSPI spi_;
+	SPI spi_;
     ByteOrder byte_order_;
     Protocol protocol_;
     

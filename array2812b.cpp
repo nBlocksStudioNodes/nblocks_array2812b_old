@@ -2,17 +2,14 @@
 
 
 
-nBlock_Array2812B::nBlock_Array2812B(PinName MOSI, uint32_t numberLEDs) {
+nBlock_Array2812B::nBlock_Array2812B(PinName MOSI, uint32_t numberLEDs):
+	_led_array(MOSI) {
 	
 	// Number of LEDs to be used
 	num_leds = numberLEDs;
 	
 	// Reset flag
-	must_update = 0;
-	
-    // The pixel array control class.
-    _pixel_array = new neopixel::PixelArray(MOSI, neopixel::BYTE_ORDER_GRB, neopixel::PROTOCOL_800KHZ);
-	
+	must_update = 0;	
 	
 }
 
@@ -28,18 +25,16 @@ void nBlock_Array2812B::triggerInput(uint32_t inputNumber, uint32_t value){
 			pixels[i].green = source_values[(i*3) + 1];
 			pixels[i].blue  = source_values[(i*3) + 2];
 		}
+		// Set flag so we update the LEDs at the end of frame
 		must_update =  1;
-		//for (uint32_t i = 0; i < (num_leds*3); i++) {
-		//	arrayValues[i] = ((uint8_t *)value)[i];
-		//}
 	}
 }
 
-void nBlock_Array2812B :: endFrame(void){
+void nBlock_Array2812B::endFrame(void){
 
 	if (must_update) {
 		must_update = 0;
-		array.update(pixels, NUM_PIXELS);
+		_led_array.update(pixels, NUM_PIXELS);
 	}
 	
 	

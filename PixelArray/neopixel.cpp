@@ -60,7 +60,8 @@ static void SendFourBits(BurstSPI& spi, uint32_t bits)
 
     static uint32_t const base = 04444;   // 100100100100
 
-    spi.fastWrite(base | ac | bd);        // 1a01b01c01d0
+    //spi.fastWrite(base | ac | bd);        // 1a01b01c01d0
+    spi.write(base | ac | bd);        // 1a01b01c01d0
 }
 
 static void SendEightBits(BurstSPI& spi, uint8_t bits)
@@ -68,7 +69,8 @@ static void SendEightBits(BurstSPI& spi, uint8_t bits)
     int zero = 0x300;  // Encode zero as 0b1100000000
     int one = 0x3e0;   // Encode one as 0b1111100000
     for (int i = 128; i >= 1; i >>= 1) {
-        spi.fastWrite((bits & i) ? one : zero);
+        //spi.fastWrite((bits & i) ? one : zero);
+        spi.write((bits & i) ? one : zero);
     }
 }
 
